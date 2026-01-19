@@ -1,0 +1,47 @@
+{
+  "name": "ct-test-automation",
+  "version": "1.0.15",
+  "main": "index.js",
+  "bin": {
+    "ct-test-automation": "./index.js"
+  },
+  "scripts": {
+    "test:api:pw": "ENV=dev PROJECT=api npx playwright test --config=playwright/playwright.config.ts",
+    "test:playwright": "npx playwright test",
+    "511:demorun": "ENV=dev PROJECT=chrome npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:qa": "ENV=qa npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev": "ENV=dev npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev:webkit": "ENV=dev PROJECT=webkit HEADLESS=false npx playwright test --config=playwright/playwright.config.ts --headed",
+    "playwright:test-web:stage:all": "ENV=dev PROJECT=all HEADLESS=true npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev:chrome": "ENV=dev PROJECT=chrome npx playwright test --config=playwright/playwright.config.ts --headed",
+    "playwright:test-web:stage:chrome:headed": "ENV=stage PROJECT=chrome HEADLESS=false npx playwright test --config=playwright/playwright.config.ts --headed",
+    "playwright:test-web:stage:chrome": "ENV=stage PROJECT=chrome HEADLESS=true npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:stage:firefox": "ENV=stage PROJECT=firefox HEADLESS=false npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev:edge": "ENV=dev PROJECT=edge npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev:chrome:test:regression": "ENV=dev PROJECT=chrome npx playwright test --grep @regression",
+    "playwright:test-web:dev:chrome:test:smoke": "ENV=dev PROJECT=chrome npx playwright test --grep @smoke",
+    "playwright:test-web:stage:fix": "ENV=stage PROJECT=chrome HEADLESS=false npx playwright test --config=playwright/playwright.config.ts --grep @fix",
+    "playwright:test-web:stage:chrome:test:specific": "ENV=stage PROJECT=chrome npx playwright test  --config=playwright/playwright.config.ts ./playwright/specs/web/511-homepage.test.ts"
+  },
+  "keywords": [],
+  "author": "Naimisha YV",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "@types/dotenv": "^6.1.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.1",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.2.2"
+  },
+  "dependencies": {
+    "@slack/web-api": "^7.8.0",
+    "contentful": "^11.10.2",
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.16.0",
+    "nodemailer": "^6.10.0",
+    "yargs": "^17.7.2"
+  }
+}

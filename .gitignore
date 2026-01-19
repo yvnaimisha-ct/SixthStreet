@@ -1,0 +1,9 @@
+/node_modules/
+/test-results/
+playwright/reports/
+playwright/reports/web/allure-results/
+playwright/reports/web/allure-report/
+package-lock.json
+.DS_Store
+.env
+

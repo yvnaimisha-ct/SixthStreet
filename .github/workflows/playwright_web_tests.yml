@@ -1,0 +1,103 @@
+---
+name: Playwright Tests
+on:
+  workflow_dispatch: null
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright browsers
+        run: npx playwright install
+      - name: Cleanup Allure folders
+        run: |
+          rm -rf ./playwright/reports/web/allure-report
+          rm -rf ./playwright/reports/web/allure-results
+      - name: Run Playwright tests
+        if: always()
+        run: npm run playwright:test-web:stage:chrome
+      - name: Install Allure Commandline
+        if: always()
+        run: npm install -g allure-commandline --save-dev
+      - name: Generate Allure report
+        if: always()
+        run: npx allure generate ./playwright/reports/web/allure-results --clean
+          --output ./playwright/reports/web//allure-report
+      #  - name: List files in the Allure directory
+      #   if: always()
+      #   run: ls -al
+      #     /home/runner/work/511-Tactical-automation/511-Tactical-automation/playwright/reports/web/allure-report/
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: ./playwright/reports/web/allure-report
+  host:
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+      - name: Download Allure report
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-report
+          path: ./playwright/reports
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright/reports
+          publish_branch: gh-pages
+          destination_dir: web
+          keep_files: true
+      - name: Create Allure Summary
+        if: always()
+        run: |
+          node create-summary.js --platform=web
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+      - name: Set email body
+        id: set-email-body
+        run: |
+          EMAIL_BODY=$(cat email-body.txt)
+          echo "email_body<<EOF" >> $GITHUB_ENV
+          echo "$EMAIL_BODY" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - name: Debug email body
+        run: |
+          echo "EMAIL_BODY=${{ env.email_body }}"
+      - name: Set Email Subject with Date
+        id: set-email-subject
+        run: >
+          echo "email_subject=Web Automation via Playwright for 511-Tactical - $(date
+          '+%d-%b-%Y')" >> $GITHUB_ENV
+      - name: Send email with report URL
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.EMAIL_USERNAME}}
+          password: ${{secrets.EMAIL_PASSWORD}}
+          subject: ${{ env.email_subject }}
+          to: ${{secrets.EMAIL_RECEPIENTS}}
+          from: ${{secrets.EMAIL_USERNAME }}
+          body: ${{env.email_body}}

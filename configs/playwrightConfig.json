@@ -1,0 +1,91 @@
+{
+    "dev": {
+      "baseURL": "https://sixthstreet.com/",
+      "apiKey": "dev-api-key",
+      "timeout": 20000,
+      "backendHostingUrl":"https://sixthstreet.com/"
+    },
+    "stage": {
+      "baseURL": "https://sixthstreet.com/",
+      "apiKey": "qa-api-key",
+      "timeout": 30000,
+      "backendHostingUrl":"https://sixthstreet.com/"
+    },
+    "prod": {
+      "baseURL": "https://sixthstreet.com/",
+      "backendHostingUrl":"https://sixthstreet.com/"
+    },
+    "headless":false,
+     "workers": 1,
+    "testAllBrowsers":[
+      {
+        "name": "chromium",
+        "use": { "browserName": "chromium" },
+        "viewport": { "width":1500,"height":900},
+        "testMatch": ["**/globalheader.test.ts","**/storedetails.test.ts"]
+      },
+      {
+        "name": "webkit",
+        "use": { "browserName": "webkit" },
+        "testMatch": ["**/511-PLP.test.ts","**/511-aboutus.test.ts"]
+      },
+      {
+        "name": "firefox",
+        "use": { "browserName": "firefox" },
+        "testMatch": ["**/511-PDP.test.ts","**/511-cart.test.ts"]
+      },
+      {
+        "name": "Microsoft Edge",
+        "use": {
+          "device": "Desktop Edge",
+          "channel": "msedge"
+        },
+        "testMatch": ["**/511-aboutus.test.ts"]
+      }
+    ] ,
+    "testChrome":[
+      {
+        "name": "chromium",
+        "workers": 4,
+        "use": { "browserName": "chromium",
+        "viewport": { "width":1500,"height":900}
+      },
+     "testMatch": ["**/511-homepage.test.ts"],
+      "testIgnore": "**/api.test.ts"
+    }
+  ],
+    "testFirefox":[
+      {
+        "name": "firefox",
+        "workers": 1,
+        "use": { "browserName": "firefox",
+        "viewport": { "width":1500,"height":960}
+      },
+        "testMatch": ["**/511-cart.test.ts"],
+        "testIgnore": "**/api.test.ts"
+      }
+    ],
+    "testSafari":[
+      {
+        "name": "webkit",
+        "workers": 1,
+        "use": { "browserName": "webkit",
+        "viewport": { "width":1500,"height":960}
+      },
+      "testMatch": ["**/511-PDP.test.ts"],
+      "testIgnore": "**/api.test.ts"
+      }
+    ],
+    "testEdge":[
+      {
+        "name": "Microsoft Edge",
+        "use": {
+          "device": "Desktop Edge",
+          "channel": "msedge"
+        },
+        "testMatch": ["**/511-login.test.ts"],
+        "viewport": { "width":720,"height":720}
+      }
+    ]
+  }
+  
