@@ -34,7 +34,7 @@ if (!config) {
 }
 
 // Default directories
-let testDir = '../playwright/specs/web';
+let testDir = './specs';
 let reportOutputDir = './playwright/reports/web/allure-results'; // Default report directory for web tests
 
 // Determine headless mode
@@ -73,7 +73,7 @@ if (projectConfig === 'chrome') {
   // If testing APIs, set the test directory and allure report path for API tests
   platform="API";
 //   projects = configs.testApi;
-  testDir = './tests/apis/';
+  testDir = "./specs/apis/";
   // Set API report directory
   reportOutputDir = './playwright/reports/api/allure-results';
 // } else {
@@ -103,7 +103,7 @@ export const user = {
 console.log("PROJECT CONFIG VALUE: ", projects);
 console.log("Report Dir: ", reportOutputDir);
 if(runMode === 'BROWSERSTACK'){
-  const updatedArray= projects.map(project => ({
+  const updatedArray= projects.map((project :{use:any})=> ({
     // Add the new field to the 'details' object
       ...project,
       use: {
@@ -122,7 +122,7 @@ if(runMode === 'BROWSERSTACK'){
 export default defineConfig({
   // Specify the directory containing test files
   // testDir: testDir, 
-  testDir: './playwright/specs',
+  testDir: './specs',
   // Global test timeout (in milliseconds)await page.getByRole('button', { name: 'Close' }).click();
   timeout: config.timeout,
   // Number of times a test will be retried before failing (set to 0 for no retries)
