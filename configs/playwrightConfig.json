@@ -1,9 +1,9 @@
 {
     "dev": {
-      "baseURL": "https://sixthstreet.com/",
+      "baseURL": "https://sixth-street-replatform-dev.vercel.app/",
       "apiKey": "dev-api-key",
       "timeout": 20000,
-      "backendHostingUrl":"https://sixthstreet.com/"
+      "backendHostingUrl":"https://sixth-street-replatform-dev.vercel.app/"
     },
     "stage": {
       "baseURL": "https://sixthstreet.com/",
@@ -22,17 +22,17 @@
         "name": "chromium",
         "use": { "browserName": "chromium" },
         "viewport": { "width":1500,"height":900},
-        "testMatch": ["**/globalheader.test.ts","**/storedetails.test.ts"]
+        "testMatch": ["**/ss-homepage.test.ts"]
       },
       {
         "name": "webkit",
         "use": { "browserName": "webkit" },
-        "testMatch": ["**/511-PLP.test.ts","**/511-aboutus.test.ts"]
+        "testMatch": ["**/ss-homepage.test.ts"]
       },
       {
         "name": "firefox",
         "use": { "browserName": "firefox" },
-        "testMatch": ["**/511-PDP.test.ts","**/511-cart.test.ts"]
+        "testMatch": ["**/ss-homepage.test.ts"]
       },
       {
         "name": "Microsoft Edge",
@@ -40,7 +40,7 @@
           "device": "Desktop Edge",
           "channel": "msedge"
         },
-        "testMatch": ["**/511-aboutus.test.ts"]
+        "testMatch": ["**/ss-homepage.test.ts"]
       }
     ] ,
     "testChrome":[

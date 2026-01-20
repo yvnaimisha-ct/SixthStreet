@@ -1,7 +1,22 @@
 import { defineConfig, devices } from '@playwright/test';
-import * as configs from '../configs/playwrightConfig.json'; // Import from configs directory
 import * as os from "node:os"; // Import OS module to retrieve system information
 import dotenv from 'dotenv';
+
+let configs: any = {};
+
+try {
+  if (process.env.CONFIG_FILE) {
+    //configs = JSON.parse(process.env.CONFIG_FILE);
+    configs = require("../configs/playwrightConfig.json");
+  } else {
+    configs = require("../configs/playwrightConfig.json");
+  }
+} catch (err) {
+  console.warn("Invalid CONFIG_FILE or parsing failed. Falling back to default config.");
+  configs = require("../configs/playwrightConfig.json");
+  console.error("Error loading config:", err);
+}
+
 dotenv.config();
 
 
@@ -13,7 +28,7 @@ let platform: 'WEB' | 'API' = 'WEB';
 const projectConfig = process.env.PROJECT;
 
 // Retrieve environment-specific configurations
-const config = configs[env];
+const config = configs[env] || { timeout: 30000 };
 if (!config) {
   throw new Error(`No configuration found for environment: ${env}`);
 }
@@ -39,7 +54,7 @@ var projects: any = [] = [];
 // const deviceConfig = isMobileMode && devices[selectedDevice] ? devices[selectedDevice] : {};
 // Assign appropriate browser-specific project configurations based on `PROJECT` environment variable
 if (projectConfig === 'chrome') {
-  projects = configs.testChrome.map(project => ({
+  projects = configs.testChrome.map((project: { use: any; }) => ({
     ...project,
     use: {
       ...project.use,
