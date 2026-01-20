@@ -106,7 +106,7 @@ The automation test run for SixthStreet is complete. Here's the summary:
 - Stop Time: ${stopTimeParsed}
 - Duration: ${duration}  
 Full execution report of this run is also available. You can view it at:
-https://github.com/yvnaimisha-ct/SixthStreet/${argv.platform}
+https://yvnaimisha-ct.github.io/SixthStreet/${argv.platform}
 You can debug this run using the following workflow link:
 ${workflowUrl}
 Best regards,  
