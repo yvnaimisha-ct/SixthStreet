@@ -1,0 +1,3 @@
+Navigated to Base URL: https://sixth-street-replatform-dev.vercel.app/
+Starting Valid URL Test
+Execution Status : passed
