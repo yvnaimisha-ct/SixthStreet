@@ -2,6 +2,7 @@ import { createClient } from 'contentful';
 import dotenv from 'dotenv';
 import path from 'path';
 import { getPublishedPostsAndPages } from './db/queries';
+import axios from 'axios';
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 

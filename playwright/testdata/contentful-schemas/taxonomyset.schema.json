@@ -1,0 +1,34 @@
+{
+  "id": "taxonomySet",
+  "name": "Taxonomy Set",
+  "displayField": "title",
+  "description": "A set of taxonomy terms (includes controlled-value sets).",
+  "fields": [
+    {
+      "id": "title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "key",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "id": "allowedContentTypes",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Symbol",
+        "validations": {
+          "regexp": "^[a-z][a-z0-9]*([A-Z][a-z0-9]+)*$"
+        }
+      }
+    }
+  ]
+}
