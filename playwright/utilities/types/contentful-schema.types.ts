@@ -20,7 +20,7 @@ export interface ExpectedContentTypeSchema {
   id: string;
   name: string;
   displayField: string;
-  description?: string;
+  description: string;
   fields: ExpectedFieldSchema[];
 }
 
@@ -39,7 +39,9 @@ export interface ContentfulField {
 }
 
 export interface ContentfulContentType {
+  id: string;
   name: string;
   displayField: string;
+  description: string;
   fields: ContentfulField[];
 }

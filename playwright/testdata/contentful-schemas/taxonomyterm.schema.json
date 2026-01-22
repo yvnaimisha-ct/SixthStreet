@@ -1,0 +1,43 @@
+{
+  "id": "taxonomyTerm",
+  "name": "Taxonomy Term",
+  "displayField": "title",
+  "description": "A term within a taxonomy set (used for both taxonomies and controlled values).",
+  "fields": [
+    {
+      "id": "title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "key",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "id": "taxonomySet",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [{
+          "linkContentType": ["taxonomySett"]
+        }
+      ]
+      },
+    {
+      "id": "parent",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [ {
+          "linkContentType": ["taxonomyTermt"]
+        }
+      ]
+    }
+  ]
+}
