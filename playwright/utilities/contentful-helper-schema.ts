@@ -10,14 +10,14 @@ const CDA_TOKEN = process.env.CONTENTFUL_CDA_TOKEN!;
 const CONTENT_TYPE = process.env.CONTENTFUL_CONTENT_TYPE!;
 
 // Debug log to verify environment variables are loaded
-console.log('SPACE_ID:', SPACE_ID ? '***' : 'NOT SET');
+console.log('SPACE_ID:', SPACE_ID ? SPACE_ID : 'NOT SET');
 console.log('ENV:', ENV);
-console.log('CDA_TOKEN:', CDA_TOKEN ? '***' : 'NOT SET');
+console.log('CDA_TOKEN:', CDA_TOKEN ? CDA_TOKEN : 'NOT SET');
 console.log('CONTENT_TYPE:', CONTENT_TYPE || 'NOT SET');
 
-const BASE_URL = `https://api.contentful.com/spaces/${SPACE_ID}/environments/${ENV}`;
+// const BASE_URL = `https://api.contentful.com/spaces/${SPACE_ID}/environments/${ENV}`;
 
-// const BASE_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENV}`;
+const BASE_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENV}`;
 
 export async function getContentType(contentTypeId: string) {
   console.log('Fetching content type:', contentTypeId);

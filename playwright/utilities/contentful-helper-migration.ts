@@ -19,6 +19,7 @@ export async function getContentfulEntriesWithLimit(contentType: string, limit: 
       limit: limit,
     });
 
+    
     console.log(`✓ Retrieved ${entries.items.length} entries from Contentful (${contentType})`);
     return entries.items;
   } catch (error) {

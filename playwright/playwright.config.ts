@@ -3,6 +3,7 @@ import * as os from "node:os"; // Import OS module to retrieve system informatio
 import dotenv from 'dotenv';
 
 let configs: any = {};
+dotenv.config();
 
 try {
   if (process.env.CONFIG_FILE) {
@@ -17,7 +18,7 @@ try {
   console.error("Error loading config:", err);
 }
 
-dotenv.config();
+// dotenv.config();
 
 
 // Get environment variables

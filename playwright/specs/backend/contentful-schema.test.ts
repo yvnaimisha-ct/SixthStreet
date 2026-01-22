@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { loadAllSchemas } from '../../utilities/schema-loader';
 import { getContentType } from '../../utilities/contentful-helper-schema';
 import { validateContentTypeSchema } from '../../utilities/db/validations';
