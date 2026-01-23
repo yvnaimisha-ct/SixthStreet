@@ -1,5 +1,5 @@
 import { TestInfo, expect, test } from '@playwright/test';
-import allure from 'allure-playwright'; 
+import allure from 'allure-playwright';
 
 import {
   ContentfulContentType,
@@ -32,7 +32,7 @@ import {
 //   expected.fields.forEach((expectedField) => {
 //     test.step(`Validating field: ${expectedField.id}`, () => {
 //       const actualField = actual.fields.find((f) => f.id === expectedField.id);
-      
+
 //       if (!actualField) {
 //         errors.push(`❌ Missing field: ${expectedField.id}`);
 //         return;
@@ -54,8 +54,7 @@ export async function validateContentTypeSchema1(
   actual: ContentfulContentType,
   expected: ExpectedContentTypeSchema,
   testInfo: TestInfo
-)
- {
+) {
   await test.step(`Validating Content Type: ${expected.id}`, () => {
     console.log(`\n🔍 Validating Content Type: ${expected.id}`);
 
@@ -93,7 +92,7 @@ export async function validateContentTypeSchema1(
           }
         );
         testInfo.attach(
-          `Type mismatch – ${expectedField.id}`,{
+          `Type mismatch – ${expectedField.id}`, {
           body: JSON.stringify(
             {
               field: expectedField.id,
@@ -105,8 +104,8 @@ export async function validateContentTypeSchema1(
             2
           ),
           contentType: 'application/json',
-      });
-      throw error;
+        });
+        throw error;
       }
 
       // ---- REQUIRED VALIDATION ----
@@ -121,7 +120,7 @@ export async function validateContentTypeSchema1(
           }
         );
         testInfo.attach(
-          `Required mismatch – ${expectedField.id}`,{
+          `Required mismatch – ${expectedField.id}`, {
           body: JSON.stringify(
             {
               field: expectedField.id,
@@ -133,7 +132,7 @@ export async function validateContentTypeSchema1(
             2
           ),
           contentType: 'application/json'
-      });
+        });
         throw error;
       }
 
@@ -163,7 +162,7 @@ export async function validateContentTypeSchema1(
             );
 
             testInfo.attach(
-              `Regexp mismatch – ${expectedField.id}`,{
+              `Regexp mismatch – ${expectedField.id}`, {
               body: JSON.stringify(
                 {
                   field: expectedField.id,
@@ -189,6 +188,7 @@ export async function validateContentTypeSchema(
   expected: ExpectedContentTypeSchema,
   testInfo: TestInfo
 ) {
+  // console.log('actual data', actual)
   await test.step(`Validating Content Type: ${expected.id}`, async () => {
     console.log(`\n🔍 Validating Content Type: ${expected.id}`);
 
@@ -272,52 +272,115 @@ export async function validateContentTypeSchema(
 
         throw error;
       }
+      // ---- LINK VALIDATION (Direct Link Field) ----
+      if (expectedField.type === 'Link') {
+        console.log(`   🔗 Validating Link field`);
 
-      // ---- ARRAY VALIDATION ----
-      if (expectedField.type === 'Array') {
-        expect(actualField!.items?.type)
-          .toBe(expectedField.items?.type);
-
-        if (expectedField.items?.validations?.regexp) {
-          const actualRegex =
-            actualField!.items?.validations?.[0]?.regexp?.pattern;
-
-          console.log(
-            `   regexp → expected: ${expectedField.items.validations.regexp}, actual: ${actualRegex}`
-          );
-
-          try {
-            expect(actualRegex).toBe(
-              expectedField.items.validations.regexp
-            );
-          } catch (error) {
-            console.error(
-              `❌ Regexp mismatch for field "${expectedField.id}"`,
+        // linkType
+        try {
+          expect(actualField!.linkType).toBe(expectedField.linkType);
+        } catch (error) {
+          testInfo.attach(`linkType mismatch – ${expectedField.id}`, {
+            body: JSON.stringify(
               {
-                expected: expectedField.items.validations.regexp,
-                actual: actualRegex,
-              }
-            );
+                field: expectedField.id,
+                property: 'linkType',
+                expected: expectedField.linkType,
+                actual: actualField!.linkType,
+              },
+              null,
+              2
+            ),
+            contentType: 'application/json',
+          });
+          throw error;
+        }
+        // ---- linkContentType (STRICT) ----
+        if (expectedField.validations && Array.isArray(expectedField.validations)) {
+          const expectedValidation = expectedField.validations.find(
+            v => 'linkContentType' in v
+          );
+          
+          if (expectedValidation?.linkContentType) {
+            const actualValidation = Array.isArray(actualField!.validations) 
+              ? actualField!.validations.find(v => 'linkContentType' in v)
+              : undefined;
 
-            testInfo.attach(`Regexp mismatch – ${expectedField.id}`, {
-              body: JSON.stringify(
-                {
-                  field: expectedField.id,
-                  property: 'items.validations.regexp',
-                  expected: expectedField.items.validations.regexp,
-                  actual: actualRegex,
-                },
-                null,
-                2
-              ),
-              contentType: 'application/json',
-            });
+            expect(
+              actualValidation,
+              `❌ Missing linkContentType validation for field "${expectedField.id}"`
+            ).toBeDefined();
 
-            throw error;
+            try {
+              expect(actualValidation!.linkContentType).toEqual(
+                expectedValidation.linkContentType
+              );
+            } catch (error) {
+              testInfo.attach(`linkContentType mismatch – ${expectedField.id}`, {
+                body: JSON.stringify(
+                  {
+                    field: expectedField.id,
+                    property: 'validations.linkContentType',
+                    expected: expectedValidation.linkContentType,
+                    actual: actualValidation?.linkContentType ?? 'MISSING',
+                  },
+                  null,
+                  2
+                ),
+                contentType: 'application/json',
+              });
+
+              throw error;
+            }
           }
         }
       }
-    });
+        // ---- ARRAY VALIDATION ----
+        else if (expectedField.type === 'Array') {
+          console.log(`   📚 Validating Array field`);
+          expect(actualField!.items?.type)
+            .toBe(expectedField.items?.type);
+
+          if (expectedField.items?.validations?.regexp) {
+            const actualRegex =
+              actualField!.items?.validations?.[0]?.regexp?.pattern;
+
+            console.log(
+              `   regexp → expected: ${expectedField.items.validations.regexp}, actual: ${actualRegex}`
+            );
+
+            try {
+              expect(actualRegex).toBe(
+                expectedField.items.validations.regexp
+              );
+            } catch (error) {
+              console.error(
+                `❌ Regexp mismatch for field "${expectedField.id}"`,
+                {
+                  expected: expectedField.items.validations.regexp,
+                  actual: actualRegex,
+                }
+              );
+
+              testInfo.attach(`Regexp mismatch – ${expectedField.id}`, {
+                body: JSON.stringify(
+                  {
+                    field: expectedField.id,
+                    property: 'items.validations.regexp',
+                    expected: expectedField.items.validations.regexp,
+                    actual: actualRegex,
+                  },
+                  null,
+                  2
+                ),
+                contentType: 'application/json',
+              });
+
+              throw error;
+            }
+          }
+        }
+      });
   }
 }
 

@@ -25,17 +25,17 @@
       "required": true,
       "linkType": "Entry",
       "validations": [{
-          "linkContentType": ["taxonomySett"]
+          "linkContentType": ["taxonomySet"]
         }
       ]
-      },
+    },
     {
       "id": "parent",
       "type": "Link",
       "required": false,
       "linkType": "Entry",
       "validations": [ {
-          "linkContentType": ["taxonomyTermt"]
+          "linkContentType": ["taxonomyTerm"]
         }
       ]
     }
