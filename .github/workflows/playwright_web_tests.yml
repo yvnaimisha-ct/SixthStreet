@@ -22,6 +22,12 @@ jobs:
         run: |
           rm -rf ./playwright/reports/web/allure-report
           rm -rf ./playwright/reports/web/allure-results
+      - name: Run Contentful Schema Tests
+        run: npm run playwright:test-web:dev:contentful
+        env: 
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_MANAGEMENT_TOKEN: ${{ secrets.CONTENTFUL_MANAGEMENT_TOKEN }}
+          CONTENTFUL_ENV: ${{ secrets.CONTENTFUL_ENVIRONMENT }}
       - name: Run Playwright tests
         if: always()
         run: npm run playwright:test-web:dev:contentful
