@@ -1,0 +1,37 @@
+{
+  "id": "controlledValue",
+  "name": "Controlled Value",
+  "displayField": "title",
+  "description": "A controlled value.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "key",
+      "name": "Key",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "sortOrder",
+      "name": "Sort Order",
+      "type": "Number",
+      "required": false
+    },
+    {
+      "id": "set",
+      "name": "Set",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [{
+          "linkContentType": ["controlledValueSet"]
+        }
+      ]
+    }
+  ]
+}

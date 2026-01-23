@@ -6,21 +6,25 @@
   "fields": [
     {
       "id": "title",
+      "name": "Title",
       "type": "Symbol",
       "required": true
     },
     {
       "id": "key",
+      "name": "Key",
       "type": "Symbol",
       "required": true
     },
     {
       "id": "description",
+      "name": "Description",
       "type": "Text",
       "required": false
     },
     {
       "id": "allowedContentTypes",
+      "name": "Allowed Content Types",
       "type": "Array",
       "required": false,
       "items": {

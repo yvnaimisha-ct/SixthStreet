@@ -1,0 +1,26 @@
+{
+  "id": "controlledValueSet",
+  "name": "Controlled Value Set",
+  "displayField": "title",
+  "description": "A set of controlled values.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "key",
+      "name": "Key",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "required": false
+    }
+  ]
+}

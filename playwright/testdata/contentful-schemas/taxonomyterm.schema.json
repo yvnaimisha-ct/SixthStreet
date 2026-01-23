@@ -6,21 +6,25 @@
   "fields": [
     {
       "id": "title",
+      "name": "Title",
       "type": "Symbol",
       "required": true
     },
     {
       "id": "key",
+      "name": "Key",
       "type": "Symbol",
       "required": true
     },
     {
       "id": "description",
+      "name": "Description",
       "type": "Text",
       "required": false
     },
     {
       "id": "taxonomySet",
+      "name": "Taxonomy Set",
       "type": "Link",
       "required": true,
       "linkType": "Entry",
@@ -31,6 +35,7 @@
     },
     {
       "id": "parent",
+      "name": "Parent",
       "type": "Link",
       "required": false,
       "linkType": "Entry",

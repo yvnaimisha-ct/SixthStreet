@@ -24,7 +24,7 @@ jobs:
           rm -rf ./playwright/reports/web/allure-results
       - name: Run Playwright tests
         if: always()
-        run: npm run playwright:test-web:dev:all 
+        run: playwright:test-web:dev:contentful
       - name: Install Allure Commandline
         if: always()
         run: npm install -g allure-commandline --save-dev

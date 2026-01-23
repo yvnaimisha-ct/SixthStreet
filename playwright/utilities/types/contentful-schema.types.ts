@@ -1,5 +1,6 @@
 export interface ExpectedFieldSchema {
   id: string;
+  name: string;
   type: string;
   required: boolean;
   linkType?: string;
@@ -28,6 +29,7 @@ export interface ExpectedContentTypeSchema {
 
 export interface ContentfulField {
   id: string;
+  name: string;
   type: string;
   required: boolean;
   linkType?: string;
