@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const SPACE_ID = process.env.CONTENTFUL_SPACE_ID!;
-const ENV = process.env.CONTENTFUL_ENV || 'master';
+const ENV = process.env.CONTENTFUL_ENV || 'development';
 const MANAGEMENT_TOKEN = process.env.CONTENTFUL_MANAGEMENT_TOKEN!;
 // const CDA_TOKEN = process.env.CONTENTFUL_CDA_TOKEN!;
 const CONTENT_TYPE = process.env.CONTENTFUL_CONTENT_TYPE!;
