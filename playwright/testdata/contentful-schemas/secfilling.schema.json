@@ -1,0 +1,86 @@
+{
+  "id": "secFiling",
+  "name": "SEC Filing",
+  "displayField": "title",
+  "description": "Regulatory filings with multiple formats and associated documents.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "id": "filingDate",
+      "name": "Filing Date",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "id": "documentDate",
+      "name": "Document Date",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "id": "form",
+      "name": "Form",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    },
+    {
+      "id": "filingGroup",
+      "name": "Filing Group",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    },
+    {
+      "id": "filingFormats",
+      "name": "Filing Formats",
+      "type": "Array",
+      "required": true,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["controlledValue"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "formatAssets",
+      "name": "Format Assets",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["assetLink"]
+          }
+        ]
+      }
+    }
+  ]
+}

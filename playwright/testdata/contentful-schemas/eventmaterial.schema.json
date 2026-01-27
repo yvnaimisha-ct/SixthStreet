@@ -1,0 +1,67 @@
+{
+  "id": "eventMaterial",
+  "name": "Event Material",
+  "displayField": "title",
+  "description": "Upcoming and past events, presentations, and discussions.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "required": false
+    },
+    {
+      "id": "date",
+      "name": "Date",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "type": "Symbol",
+      "required": false
+    },
+    {
+      "id": "webcast",
+      "name": "Webcast",
+      "type": "Symbol",
+      "required": false,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^https?://"
+          }
+        }
+      ]
+    },
+    {
+      "id": "attachments",
+      "name": "Attachments",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Asset"
+      }
+    },
+    {
+      "id": "businessGroup",
+      "name": "Business Group",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "investment",
+  "name": "Investment",
+  "displayField": "title",
+  "description": "Portfolio investment entities.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "required": true
+    },
+    {
+      "id": "logo",
+      "name": "Logo",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["imageWrapper"]
+        }
+      ]
+    },
+    {
+      "id": "websiteUrl",
+      "name": "Website URL",
+      "type": "Symbol",
+      "required": true,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^https?://"
+          }
+        }
+      ]
+    },
+    {
+      "id": "status",
+      "name": "Status",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "industry",
+      "name": "Industry",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "investmentType",
+      "name": "Investment Type",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    }
+  ]
+}

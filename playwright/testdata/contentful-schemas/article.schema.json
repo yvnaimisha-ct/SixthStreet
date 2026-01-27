@@ -1,0 +1,144 @@
+{
+  "id": "article",
+  "name": "Article",
+  "displayField": "title",
+  "description": "Editorial content including articles, media mentions, videos, and insights.",
+  "fields": [
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "type": "Text",
+      "required": true
+    },
+    {
+      "id": "datePublished",
+      "name": "Date Published",
+      "type": "Date",
+      "required": true
+    },
+    {
+      "id": "variant",
+      "name": "Variant",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    },
+    {
+      "id": "audienceType",
+      "name": "Audience Type",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    },
+    {
+      "id": "industry",
+      "name": "Industry",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["taxonomyTerm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["taxonomyTerm"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "author",
+      "name": "Author",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["person"]
+        }
+      ]
+    },
+    {
+      "id": "mediaMentionLink",
+      "name": "Media Mention Link",
+      "type": "Symbol",
+      "required": false,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^https?://"
+          }
+        }
+      ]
+    },
+    {
+      "id": "videoEmbed",
+      "name": "Video Embed",
+      "type": "Symbol",
+      "required": false
+    },
+    {
+      "id": "body",
+      "name": "Body",
+      "type": "RichText",
+      "required": false
+    },
+    {
+      "id": "featuredImage",
+      "name": "Featured Image",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["imageWrapper"]
+        }
+      ]
+    },
+    {
+      "id": "relatedContent",
+      "name": "Related Content",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["article"]
+          }
+        ]
+      }
+    }
+  ]
+}

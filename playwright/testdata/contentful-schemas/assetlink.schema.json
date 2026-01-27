@@ -1,0 +1,46 @@
+{
+  "id": "assetLink",
+  "name": "Asset Link",
+  "displayField": "label",
+  "description": "Reusable wrapper for external URLs and/or uploaded assets with optional format classification.",
+  "fields": [
+    {
+      "id": "label",
+      "name": "Label",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "url",
+      "name": "URL",
+      "type": "Symbol",
+      "required": true,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^https?://"
+          }
+        }
+      ]
+    },
+    {
+      "id": "file",
+      "name": "File",
+      "type": "Link",
+      "required": false,
+      "linkType": "Asset"
+    },
+    {
+      "id": "format",
+      "name": "Format",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["controlledValue"]
+        }
+      ]
+    }
+  ]
+}

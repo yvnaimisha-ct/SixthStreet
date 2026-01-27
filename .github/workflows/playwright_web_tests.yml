@@ -33,7 +33,7 @@ jobs:
           CONTENTFUL_ENV: ${{ secrets.CONTENTFUL_ENV }}
       - name: Run Contentful Schema Tests
         if: always()
-        run: npm run playwright:test-web:dev:contentful
+        run: npm run playwright:test-web:dev:all
         env: 
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_ENV: ${{ secrets.CONTENTFUL_ENVIRONMENT }}

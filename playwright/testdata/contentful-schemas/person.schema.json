@@ -1,0 +1,114 @@
+{
+  "id": "person",
+  "name": "Person",
+  "displayField": "name",
+  "description": "People associated with the firm, including leadership and contributors.",
+  "fields": [
+    {
+      "id": "name",
+      "name": "Name",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "role",
+      "name": "Role",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "biography",
+      "name": "Biography",
+      "type": "Text",
+      "required": true
+    },
+    {
+      "id": "image",
+      "name": "Image",
+      "type": "Link",
+      "required": true,
+      "linkType": "Asset",
+      "validations": [
+        {
+          "linkMimetypeGroup": ["image"]
+        }
+      ]
+    },
+    {
+      "id": "linkedInProfile",
+      "name": "LinkedIn Profile",
+      "type": "Symbol",
+      "required": false,
+      "validations": [
+        {
+          "regexp": {
+            "pattern": "^https?://"
+          }
+        }
+      ]
+    },
+    {
+      "id": "businessGroup",
+      "name": "Business Group",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "peopleType",
+      "name": "People Type",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["strategy", "taxonomyTerm"]
+        }
+      ]
+    },
+    {
+      "id": "sector",
+      "name": "Sector",
+      "type": "Link",
+      "required": false,
+      "linkType": "Entry",
+      "validations": [
+        {
+          "linkContentType": ["sector"]
+        }
+      ]
+    },
+    {
+      "id": "mediaFeatures",
+      "name": "Media Features",
+      "type": "Array",
+      "required": false,
+      "items": {
+        "type": "Link",
+        "linkType": "Entry",
+        "validations": [
+          {
+            "linkContentType": ["article"]
+          }
+        ]
+      }
+    }
+  ]
+}

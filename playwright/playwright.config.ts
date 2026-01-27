@@ -124,6 +124,7 @@ export default defineConfig({
   // Specify the directory containing test files
   // testDir: testDir, 
   testDir: './specs',
+    // testDir: './playwright/specs',
   // Global test timeout (in milliseconds)await page.getByRole('button', { name: 'Close' }).click();
   timeout: config.timeout,
   // Number of times a test will be retried before failing (set to 0 for no retries)

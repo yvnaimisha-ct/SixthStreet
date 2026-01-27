@@ -9,9 +9,9 @@
     "test:api:pw": "ENV=dev PROJECT=api npx playwright test --config=playwright/playwright.config.ts",
     "test:playwright": "npx playwright test",
     "511:demorun": "ENV=dev PROJECT=chrome npx playwright test --config=playwright/playwright.config.ts",
-    "playwright:test-web:dev": "ENV=qa npx playwright test --config=playwright/playwright.config.ts",
+    "playwright:test-web:dev": "ENV=dev PROJECT=all HEADLESS=false npx playwright test --config=playwright/playwright.config.ts --debug",
     "playwright:test-web:dev:all": "ENV=dev PROJECT=all HEADLESS=true npx playwright test --config=playwright/playwright.config.ts",
-    "playwright:test-web:dev:contentful": "CONTENTFUL_ENV=development PROJECT=all HEADLESS=true npx playwright test playwright/specs/backend/contentful-schema.test.ts",
+    "playwright:test-web:dev:contentful": "ENV=dev PROJECT=all HEADLESS=true npx playwright test --config=playwright/playwright.config.ts --grep @contentful",
 
 
     "playwright:test-web:dev:webkit": "ENV=dev PROJECT=webkit HEADLESS=false npx playwright test --config=playwright/playwright.config.ts --headed",
