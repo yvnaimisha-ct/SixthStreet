@@ -7,7 +7,7 @@
     {
       "id": "title",
       "name": "Title",
-      "type": "Symbol",
+      "type": "Symbol", 
       "required": true
     },
     {

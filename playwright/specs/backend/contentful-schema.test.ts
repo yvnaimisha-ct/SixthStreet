@@ -1,7 +1,8 @@
 import { TestInfo, expect, test } from '@playwright/test';
 import { loadAllSchemas } from '../../utilities/schema-loader';
+import { loadSchemas } from '../../utilities/schema-loader';
 import { getContentType } from '../../utilities/contentful-helper-schema';
-import { validateContentTypeSchema } from '../../utilities/db/validations2';
+import { validateContentTypeSchema } from '../../utilities/db/validations';
 
 const schemas = loadAllSchemas();
 test.describe('@contentful Contentful schema validation', () => {
@@ -17,7 +18,18 @@ test.describe('@contentful Contentful schema validation', () => {
     });
   }
 
-  test.only(`Page Load validation: `, async ({ page }) => {
+test.describe('@contentful targeted schema validation', () => {
+  const schemas = loadSchemas();
+
+  for (const schema of schemas) {
+    test.only(`Validate schema: ${schema.id}`, async ({}, testInfo) => {
+      const actual = await getContentType(schema.id);
+      await validateContentTypeSchema(actual, schema, testInfo);
+    });
+  }
+});
+
+  test.skip(`Page Load validation: `, async ({ page }) => {
     console.log('Page load check');
     
     // Add timeout and wait for the input to be visible

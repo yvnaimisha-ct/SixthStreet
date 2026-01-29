@@ -1,329 +1,408 @@
-import { TestInfo, expect, test } from '@playwright/test';
-import allure from 'allure-playwright';
+import { expect, TestInfo } from '@playwright/test';
 
-// ---------------- TYPES ----------------
-export type Validation = {
-  regexp?: { pattern: string };
-  linkContentType?: string[];
+/* ------------------------------------------------------------------ */
+/* TYPES */
+/* ------------------------------------------------------------------ */
+
+export type SchemaError = {
+  contentType: string;
+  field: string;
+  rule: string;
+  expected?: any;
+  actual?: any;
 };
-
-export interface ArrayItems {
-  type: string;
-  linkType?: string;
-  validations?: Validation[];
-}
 
 export interface ExpectedFieldSchema {
   id: string;
-  name?: string;
+  name: string;
   type: string;
   required: boolean;
   linkType?: string;
-  items?: ArrayItems;
-  validations?: Validation[];
+  items?: {
+    type: string;
+    validations?: {
+      regexp?: string;
+      linkContentType?: string[];
+      linkMimetypeGroup?: string[];
+    };
+  };
+  validations?: {
+    regexp?: string;
+    linkContentType?: string[];
+    linkMimetypeGroup?: string[];
+  };
 }
 
 export interface ExpectedContentTypeSchema {
   id: string;
   name: string;
   displayField: string;
-  description?: string;
+  description: string;
   fields: ExpectedFieldSchema[];
 }
 
-export interface ContentfulField extends ExpectedFieldSchema {}
+export interface ContentfulField {
+  id: string;
+  name: string;
+  type: string;
+  required: boolean;
+  linkType?: string;
+  validations?: any[];
+  items?: {
+    type: string;
+    linkType?: string;
+    validations?: any[];
+  };
+}
 
 export interface ContentfulContentType {
   id: string;
   name: string;
   displayField: string;
-  description?: string;
+  description: string;
   fields: ContentfulField[];
 }
 
-// ---------------- VALIDATION FUNCTION ----------------
+/* ------------------------------------------------------------------ */
+/* MAIN VALIDATOR */
+/* ------------------------------------------------------------------ */
+
 export async function validateContentTypeSchema(
   actual: ContentfulContentType,
   expected: ExpectedContentTypeSchema,
   testInfo: TestInfo
-) {
-  // ---- CONTENT TYPE LEVEL ----
-  await test.step(`Validating Content Type: ${expected.id}`, async () => {
-    console.log(`\n🔍 Validating Content Type: ${expected.id}`);
-    expect(actual.id).toBe(expected.id);
-    expect(actual.name).toBe(expected.name);
-    expect(actual.displayField).toBe(expected.displayField);
-    // if (expected.description) {
-    //   expect(actual.description).toBe(expected.description);
-    // }
-  });
+): Promise<SchemaError[]> {
+  const errors: SchemaError[] = [];
 
-  // ---- FIELD LEVEL ----
+  console.log(`\n📦 Validating Content Type: ${expected.id}`);
+
+  /* ---- CONTENT TYPE META ---- */
+  assertRule(actual.id, expected.id, 'id', expected.id, '__meta__', errors);
+
+  assertRule(actual.name, expected.name, 'name', expected.id, '__meta__', errors);
+
+  assertRule(actual.displayField, expected.displayField, 'displayField', expected.id, '__meta__', errors);
+
+  /* ---- FIELD LEVEL ---- */
   for (const expectedField of expected.fields) {
-    await test.step(`Validating Field: ${expectedField.id}`, async () => {
-      console.log(`\n➡️ Validating Field: ${expectedField.id}`);
+    console.log(`  🔍 Field: ${expectedField.id}`);
 
-      const actualField = actual.fields.find(f => f.id === expectedField.id);
-      expect(actualField, `❌ Missing field: ${expectedField.id}`).toBeDefined();
+    const actualField = actual.fields.find(
+      f => f.id === expectedField.id
+    );
 
-      // --- TYPE ---
-      try {
-        expect(actualField!.type).toBe(expectedField.type);
-      } catch (error) {
-        testInfo.attach(`Type mismatch – ${expectedField.id}`, {
-          body: JSON.stringify(
-            {
-              field: expectedField.id,
-              property: 'type',
-              expected: expectedField.type,
-              actual: actualField!.type,
-            },
-            null,
-            2
-          ),
-          contentType: 'application/json',
-        });
-        throw error;
-      }
+    if (!actualField) {
+      recordError(errors, {
+        contentType: expected.id,
+        field: expectedField.id,
+        rule: 'presence',
+        expected: 'FIELD_EXISTS',
+        actual: 'MISSING',
+      });
+      console.log(`    ❌ Missing field`);
+      continue;
+    }
 
-      // --- NAME ---
-      if (expectedField.name) {
-        try {
-          expect(actualField!.name).toBe(expectedField.name);
-        } catch (error) {
-          testInfo.attach(`Name mismatch – ${expectedField.id}`, {
-            body: JSON.stringify(
-              {
-                field: expectedField.id,
-                property: 'name',
-                expected: expectedField.name,
-                actual: actualField!.name,
-              },
-              null,
-              2
-            ),
-            contentType: 'application/json',
-          });
-          throw error;
-        }
-      }
+    console.log(`    ✅ Field present`);
 
-      // --- REQUIRED ---
-      try {
-        expect(actualField!.required).toBe(expectedField.required);
-      } catch (error) {
-        testInfo.attach(`Required mismatch – ${expectedField.id}`, {
-          body: JSON.stringify(
-            {
-              field: expectedField.id,
-              property: 'required',
-              expected: expectedField.required,
-              actual: actualField!.required,
-            },
-            null,
-            2
-          ),
-          contentType: 'application/json',
-        });
-        throw error;
-      }
+    /* ---- BASE RULES ---- */
+    assertRule(actualField.type, expectedField.type, 'type', expected.id, expectedField.id, errors);
 
-      // --- LINK FIELD ---
-      if (expectedField.type === 'Link') {
-        await validateLinkField(actualField!, expectedField, testInfo);
-      }
+    assertRule(actualField.required, expectedField.required, 'required', expected.id, expectedField.id, errors);
 
-      // --- ARRAY FIELD ---
-      if (expectedField.type === 'Array') {
-        await validateArrayField(actualField!, expectedField, testInfo);
-      }
+    assertRule(actualField.name, expectedField.name, 'name', expected.id, expectedField.id, errors);
 
-      // --- REGEXP VALIDATION FOR SYMBOL/TEXT FIELDS ---
-      if (expectedField.validations?.length) {
-        const regexValidation = expectedField.validations.find(v => v.regexp?.pattern);
-        if (regexValidation?.regexp?.pattern) {
-          const actualRegex = actualField!.validations?.[0]?.regexp?.pattern ?? 'MISSING';
-          try {
-            expect(actualRegex).toBe(regexValidation.regexp.pattern);
-          } catch (error) {
-            testInfo.attach(`Regexp mismatch – ${expectedField.id}`, {
-              body: JSON.stringify(
-                {
-                  field: expectedField.id,
-                  property: 'validations.regexp',
-                  expected: regexValidation.regexp.pattern,
-                  actual: actualRegex,
-                },
-                null,
-                2
-              ),
-              contentType: 'application/json',
-            });
-            throw error;
-          }
-        }
-      }
+    // if (expected.description !== undefined) {
+    //   assertRule(
+    //     actual.description,
+    //     expected.description,
+    //     'description',
+    //     expected.id,
+    //     '__meta__',
+    //     errors
+    //   );
+    // }
+
+    /* ---- LINK FIELD RULES ---- */
+    if (expectedField.type === 'Link') {
+      assertRule(
+        actualField.linkType,
+        expectedField.linkType,
+        'linkType',
+        expected.id,
+        expectedField.id,
+        errors
+      );
+
+      validateLinkContentType(
+        actualField.validations,
+        expectedField.validations,
+        expected.id,
+        expectedField.id,
+        errors
+      );
+
+      validateLinkMimeTypeGroup(
+        actualField.validations,
+        expectedField.validations,
+        expected.id,
+        expectedField.id,
+        errors
+      );
+    }
+
+    /* ---- ARRAY FIELD RULES ---- */
+    if (expectedField.type === 'Array') {
+      validateArrayRules(
+        actualField,
+        expectedField,
+        expected.id,
+        errors
+      );
+    }
+
+    /* ---- FIELD VALIDATIONS ---- */
+    validateRegexpRule(
+      actualField.validations,
+      expectedField.validations,
+      expected.id,
+      expectedField.id,
+      errors
+    );
+  }
+
+  /* ---- FINAL REPORT ---- */
+  if (errors.length > 0) {
+    console.error(`❌ Content Type ${expected.id} FAILED (${errors.length} issues)`);
+    testInfo.attach(`Schema errors – ${expected.id}`, {
+      body: JSON.stringify(errors, null, 2),
+      contentType: 'application/json',
+    });
+    throw new Error(`Schema validation failed for Content Type ${expected.id} with ${errors.length} errors.`);
+  } else {
+    console.log(`✅ Content Type ${expected.id} PASSED`);
+  }
+
+  return errors;
+}
+
+/* ------------------------------------------------------------------ */
+/* RULE HELPERS */
+/* ------------------------------------------------------------------ */
+
+function validateArrayRules(
+  actualField: ContentfulField,
+  expectedField: ExpectedFieldSchema,
+  contentType: string,
+  errors: SchemaError[]
+) {
+  const actualItems = actualField.items;
+  const expectedItems = expectedField.items;
+
+  if (!actualItems) {
+    recordError(errors, {
+      contentType,
+      field: expectedField.id,
+      rule: 'items',
+      expected: 'DEFINED',
+      actual: 'MISSING',
+    });
+    return;
+  }
+
+  assertRule(
+    actualItems.type,
+    expectedItems?.type,
+    'items.type',
+    contentType,
+    expectedField.id,
+    errors
+  );
+
+  assertRule(
+    actualItems.linkType,
+    expectedItems?.linkType,
+    'items.linkType',
+    contentType,
+    expectedField.id,
+    errors
+  );
+
+  /* items.regexp */
+  validateRegexpRule(
+    actualItems.validations,
+    expectedItems?.validations,
+    contentType,
+    `${expectedField.id}.items`,
+    errors
+  );
+
+  /* items.linkContentType */
+  validateLinkContentType(
+    actualItems.validations,
+    expectedItems?.validations,
+    contentType,
+    `${expectedField.id}.items`,
+    errors
+  );
+
+  validateLinkMimeTypeGroup(
+    actualItems.validations,
+    expectedItems?.validations,
+    contentType,
+    `${expectedField.id}.items`,
+    errors
+  );
+}
+
+function normalizeExpectedValidations(validations: any): any[] {
+  if (!validations) return [];
+  return Array.isArray(validations) ? validations : [validations];
+}
+
+
+/* VALIDATION RULES */
+
+// function validateRegexpRule(
+//   actualValidations: any[] | undefined,
+//   expectedValidations: any | undefined,
+//   contentType: string,
+//   field: string,
+//   errors: SchemaError[]
+// ) {
+//   const expected = expectedValidations?.regexp;
+//   if (!expected) return;
+
+//   const actual =
+//     actualValidations?.find(v => v.regexp)?.regexp?.pattern;
+
+//   assertRule(
+//     actual,
+//     expected,
+//     'regexp',
+//     contentType,
+//     field,
+//     errors
+//   );
+// }
+function validateRegexpRule(
+  actualValidations: any[] | undefined,
+  expectedValidations: any,
+  contentType: string,
+  field: string,
+  errors: SchemaError[]
+) {
+  const expectedList = normalizeExpectedValidations(expectedValidations);
+
+  const expected = expectedList.find(v => v.regexp)?.regexp;
+  if (!expected) return;
+
+  const expectedPattern =
+    typeof expected === 'string' ? expected : expected.pattern;
+
+  const actualPattern =
+    actualValidations?.find(v => v.regexp)?.regexp?.pattern;
+
+  assertRule(
+    actualPattern,
+    expectedPattern,
+    'regexp',
+    contentType,
+    field,
+    errors
+  );
+}
+
+function validateLinkContentType(
+  actualValidations: any[] | undefined,
+  expectedValidations: any | undefined,
+  contentType: string,
+  field: string,
+  errors: SchemaError[]
+) {
+
+  const expectedList = normalizeExpectedValidations(expectedValidations);
+  // const expected = expectedValidations?.linkContentType;
+  const expected =
+    expectedList.find(v => v.linkContentType)?.linkContentType;
+  if (!expected) return;
+
+  const actual =
+    actualValidations?.find(v => v.linkContentType)?.linkContentType;
+
+  assertRule(
+    actual,
+    expected,
+    'linkContentType',
+    contentType,
+    field,
+    errors
+  );
+}
+
+function validateLinkMimeTypeGroup(
+  actualValidations: any[] | undefined,
+  expectedValidations: any | undefined,
+  contentType: string,
+  field: string,
+  errors: SchemaError[]
+) {
+
+  const expectedList = normalizeExpectedValidations(expectedValidations);
+  // const expected = expectedValidations?.linkMimetypeGroup;
+  const expected =
+    expectedList.find(v => v.linkMimetypeGroup)?.linkMimetypeGroup;
+  if (!expected) return;
+
+  const actual =
+    actualValidations?.find(v => v.linkMimetypeGroup)?.linkMimetypeGroup;
+
+  assertRule(
+    actual,
+    expected,
+    'linkMimetypeGroup',
+    contentType,
+    field,
+    errors
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* ASSERT + ERROR COLLECTOR */
+/* ------------------------------------------------------------------ */
+
+function assertRule(
+  actual: any,
+  expected: any,
+  rule: string,
+  contentType: string,
+  field: string,
+  errors: SchemaError[]
+) {
+  try {
+    expect(actual).toEqual(expected);
+    console.log(`    ✅ ${rule}`);
+  } catch {
+    // console.log(`    ❌ ${rule}`);
+    console.log(
+      `    ❌ ${rule}\n` +
+      `       ↳ expected: ${JSON.stringify(expected)}\n` +
+      `       ↳ actual:   ${JSON.stringify(actual)}`
+    );
+
+    recordError(errors, {
+      contentType,
+      field,
+      rule,
+      expected,
+      actual,
     });
   }
 }
 
-// ---------------- HELPERS ----------------
-async function validateLinkField(
-  actualField: ContentfulField,
-  expectedField: ExpectedFieldSchema,
-  testInfo: TestInfo
+function recordError(
+  errors: SchemaError[],
+  error: SchemaError
 ) {
-  console.log(`   🔗 Validating Link field`);
-
-  if (expectedField.linkType) {
-    try {
-      expect(actualField.linkType).toBe(expectedField.linkType);
-    } catch (error) {
-      testInfo.attach(`linkType mismatch – ${expectedField.id}`, {
-        body: JSON.stringify(
-          {
-            field: expectedField.id,
-            property: 'linkType',
-            expected: expectedField.linkType,
-            actual: actualField.linkType,
-          },
-          null,
-          2
-        ),
-        contentType: 'application/json',
-      });
-      throw error;
-    }
-  }
-
-  if (expectedField.validations?.length) {
-    const expectedValidation = expectedField.validations.find(v => v.linkContentType?.length);
-    if (expectedValidation?.linkContentType?.length) {
-      const actualValidation = actualField.validations?.find(v => v.linkContentType?.length);
-      expect(
-        actualValidation,
-        `❌ Missing linkContentType validation for field "${expectedField.id}"`
-      ).toBeDefined();
-
-      try {
-        expect(actualValidation!.linkContentType).toEqual(expectedValidation.linkContentType);
-      } catch (error) {
-        testInfo.attach(`linkContentType mismatch – ${expectedField.id}`, {
-          body: JSON.stringify(
-            {
-              field: expectedField.id,
-              property: 'validations.linkContentType',
-              expected: expectedValidation.linkContentType,
-              actual: actualValidation?.linkContentType ?? 'MISSING',
-            },
-            null,
-            2
-          ),
-          contentType: 'application/json',
-        });
-        throw error;
-      }
-    }
-  }
+  errors.push(error);
 }
-
-async function validateArrayField(
-  actualField: ContentfulField,
-  expectedField: ExpectedFieldSchema,
-  testInfo: TestInfo
-) {
-  console.log(`   📚 Validating Array field`);
-
-  const expectedItems = expectedField.items;
-  const actualItems = actualField.items;
-
-  // ⚠️ Guard against undefined items
-  expect(actualItems, `❌ Missing items definition for array field "${expectedField.id}"`).toBeDefined();
-  if (!actualItems) return; // early exit to satisfy TypeScript
-
-  // Validate item type
-  expect(actualItems.type).toBe(expectedItems?.type);
-
-  // If items are Link, validate linkType + linkContentType
-  if (actualItems.type === 'Link' && expectedItems) {
-    if (expectedItems.linkType) {
-      try {
-        expect(actualItems.linkType).toBe(expectedItems.linkType);
-      } catch (error) {
-        testInfo.attach(`Array items.linkType mismatch – ${expectedField.id}`, {
-          body: JSON.stringify(
-            {
-              field: expectedField.id,
-              property: 'items.linkType',
-              expected: expectedItems.linkType,
-              actual: actualItems.linkType,
-            },
-            null,
-            2
-          ),
-          contentType: 'application/json',
-        });
-        throw error;
-      }
-    }
-
-    if (expectedItems.validations?.length) {
-      const expectedValidation = expectedItems.validations.find(v => v.linkContentType?.length);
-      if (expectedValidation?.linkContentType?.length) {
-        const actualValidation = actualItems.validations?.find(v => v.linkContentType?.length);
-
-        expect(
-          actualValidation,
-          `❌ Missing linkContentType in array items "${expectedField.id}"`
-        ).toBeDefined();
-        if (!actualValidation) return;
-
-        try {
-          expect(actualValidation!.linkContentType).toEqual(expectedValidation.linkContentType);
-        } catch (error) {
-          testInfo.attach(`Array items.linkContentType mismatch – ${expectedField.id}`, {
-            body: JSON.stringify(
-              {
-                field: expectedField.id,
-                property: 'items.validations.linkContentType',
-                expected: expectedValidation.linkContentType,
-                actual: actualValidation?.linkContentType ?? 'MISSING',
-              },
-              null,
-              2
-            ),
-            contentType: 'application/json',
-          });
-          throw error;
-        }
-      }
-    }
-  }
-
-  // Regexp for array items
-  if (expectedItems?.validations?.length) {
-    const regexValidation = expectedItems.validations.find(v => v.regexp?.pattern);
-    if (regexValidation?.regexp?.pattern) {
-      const actualRegex = actualItems.validations?.[0]?.regexp?.pattern ?? 'MISSING';
-      try {
-        expect(actualRegex).toBe(regexValidation.regexp.pattern);
-      } catch (error) {
-        testInfo.attach(`Array items.regexp mismatch – ${expectedField.id}`, {
-          body: JSON.stringify(
-            {
-              field: expectedField.id,
-              property: 'items.validations.regexp',
-              expected: regexValidation.regexp.pattern,
-              actual: actualRegex,
-            },
-            null,
-            2
-          ),
-          contentType: 'application/json',
-        });
-        throw error;
-      }
-    }
-  }
-}
-

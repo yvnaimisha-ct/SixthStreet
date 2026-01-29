@@ -33,7 +33,7 @@
       "name": "Form",
       "type": "Link",
       "required": true,
-      "linkType": "Entry",
+      "linkType": "Entry", 
       "validations": [
         {
           "linkContentType": ["controlledValue"]

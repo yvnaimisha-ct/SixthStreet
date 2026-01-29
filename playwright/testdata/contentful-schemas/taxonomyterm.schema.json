@@ -2,7 +2,7 @@
   "id": "taxonomyTerm",
   "name": "Taxonomy Term",
   "displayField": "title",
-  "description": "A term within a taxonomy set (used for both taxonomies and controlled values).",
+  "description": "A term within a taxonomy set (used for both taxonomies and controlled values1).",
   "fields": [
     {
       "id": "title",
