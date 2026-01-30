@@ -86,6 +86,16 @@
         "testMatch": ["**/511-login.test.ts"],
         "viewport": { "width":720,"height":720}
       }
+    ],
+    "testapi":[
+      {
+        "name": "Contentfultest",
+        "use": {
+        },
+        "testMatch": ["**/contentful-schema.test.ts"]
+      }
     ]
   }
+
+
   

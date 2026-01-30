@@ -1,0 +1,28 @@
+{
+  "entityType": "taxonomy",
+
+  "contentType": "taxonomyTerm1",
+
+  "taxonomySet": {
+    "contentType": "taxonomySet",
+    "name": "Sector",
+    "field": "sector"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+      "requiredFields": ["title", "key", "description"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Asset-Based Finance",
+      "key": "assetBasedFinance",
+      "description": "Investments tied to asset-backed lending markets where financing is driven by collateral pools and contracted cash flows (e.g., receivables, consumer/merchant assets, hard assets)."
+    }
+  ]
+}

@@ -74,7 +74,8 @@ if (projectConfig === 'chrome') {
   // If testing APIs, set the test directory and allure report path for API tests
   platform="API";
 //   projects = configs.testApi;
-  testDir = "./specs/apis/";
+  testDir = "./specs/backend/";
+  projects = configs.testapi;
   // Set API report directory
   reportOutputDir = './playwright/reports/api/allure-results';
 // } else {
