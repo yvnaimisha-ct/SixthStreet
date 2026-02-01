@@ -1,7 +1,7 @@
 {
   "entityType": "taxonomy",
 
-  "contentType": "taxonomyTerm1",
+  "contentType": "taxonomyTerm",
 
   "taxonomySet": {
     "contentType": "taxonomySet",
@@ -23,6 +23,51 @@
       "title": "Asset-Based Finance",
       "key": "assetBasedFinance",
       "description": "Investments tied to asset-backed lending markets where financing is driven by collateral pools and contracted cash flows (e.g., receivables, consumer/merchant assets, hard assets)."
+    },
+    {
+      "title": "Consumer",
+      "key": "consumer",
+      "description": "Investments tied to consumer-facing businesses and digital platforms, including commerce, marketplaces, and internet-enabled services."
+    },
+    {
+      "title": "Direct Lending",
+      "key": "directLending",
+      "description": "Investments tied to private credit markets—companies, sponsors, and ecosystems where direct corporate lending is the primary activity."
+    },
+    {
+      "title": "Energy & Infrastructure",
+      "key": "energyInfrastructure",
+      "description": "Investments supporting energy production and delivery, renewable generation, and essential infrastructure assets and services."
+    },
+    {
+      "title": "Growth",
+      "key": "growth",
+      "description": "Investments in growth-stage businesses and industries, focused on companies scaling products, markets, and revenues."
+    },
+    {
+      "title": "Healthcare & Life Sciences",
+      "key": "healthcareLifeSciences",
+      "description": "Investments across healthcare services, life sciences, medical technology, and health-related infrastructure."
+    },
+    {
+      "title": "Insurance",
+      "key": "insurance",
+      "description": "Capital and investment solutions related to insurance businesses and/or insurance-linked balance sheets (e.g., partnering with insurers, reinsurers, or managing insurance-related assets)."
+    },
+    {
+      "title": "Real Estate",
+      "key": "realEstate",
+      "description": "Investments backed by real estate assets or platforms, including property-level and portfolio-level capital solutions."
+    },
+    {
+      "title": "Software & Services",
+      "key": "softwareServices",
+      "description": "Investments in software and software-enabled businesses, including enterprise platforms and recurring-revenue technology models."
+    },
+    {
+      "title": "Sports, Media & Entertainment",
+      "key": "sportsMediaEntertainment",
+      "description": "Investments in content, distribution, and media/entertainment businesses, including traditional and digital media platforms."
     }
   ]
 }

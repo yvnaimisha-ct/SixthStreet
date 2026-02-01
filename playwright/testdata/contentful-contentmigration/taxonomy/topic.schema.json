@@ -1,0 +1,77 @@
+{
+  "entityType": "taxonomy",
+  
+
+  "category": {
+    "contentType": "taxonomySet",
+    "name": "Topic"
+  },
+
+  "term": {
+    "contentType": "taxonomyTerm"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+      "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Data & Trust",
+      "key": "dataAndTrust"
+    },
+    {
+      "title": "Geopolitics",
+      "key": "geopolitics"
+    },
+    {
+      "title": "Health & Bio",
+      "key": "healthAndBio"
+    },
+    {
+      "title": "Impact",
+      "key": "impact"
+    },
+    {
+      "title": "Inclusion",
+      "key": "inclusion"
+    },
+    {
+      "title": "Investing",
+      "key": "investing"
+    },
+    {
+      "title": "Journalism",
+      "key": "journalism"
+    },
+    {
+      "title": "Leadership",
+      "key": "leadership"
+    },
+    {
+      "title": "Media & Sports",
+      "key": "mediaSports"
+    },
+    {
+      "title": "Operations",
+      "key": "operations"
+    },
+    {
+      "title": "Policy",
+      "key": "policy"
+    },
+    {
+      "title": "Talent",
+      "key": "talent"
+    },
+    {
+      "title": "Tech & AI",
+      "key": "Tech & AI"
+    }
+  ]
+}

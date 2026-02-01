@@ -1,0 +1,43 @@
+{
+  "entityType": "taxonomy",
+
+  "contentType": "taxonomyTerm",
+
+  "taxonomySet": {
+    "contentType": "taxonomySet",
+    "name": "Industry",
+    "field": "industry"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+    "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Application Software",
+      "key": "applicationSoftware",
+      "description?": ""
+    },
+    {
+      "title": "Health Technology",
+      "key": "healthTechnology",
+      "description": ""
+    },
+    {
+      "title": "Internet Services & Infrastructure",
+      "key": "internetServicesInfrastructure",
+      "description": ""
+    },
+    {
+      "title": "Systems Software",
+      "key": "systemsSoftware",
+      "description": ""
+    }
+  ]
+}

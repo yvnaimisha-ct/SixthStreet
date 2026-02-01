@@ -1,0 +1,69 @@
+{
+  "entityType": "taxonomy",
+
+  "category": {
+    "contentType": "taxonomySet",
+    "name": "Strategy"
+  },
+
+  "term": {
+    "contentType": "taxonomyTerm"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+      "requiredFields": ["title", "key", "description"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Asset Based Finance",
+      "key": "assetBasedFinance",
+      "description": "Financing backed primarily by pools of assets/cash flows (e.g., receivables, consumer/merchant finance, hard assets), with underwriting anchored in collateral performance."
+    },
+    {
+      "title": "Credit Market Strategies",
+      "key": "creditMarketStrategies",
+      "description": "Public and liquid credit investing across traded instruments, focused on relative value, credit selection, and market opportunities."
+    },
+    {
+      "title": "Direct Lending",
+      "key": "directLending",
+      "description": "Private credit provided directly to companies (often sponsor-backed or structured), including senior, unitranche, and other bespoke lending solutions."
+    },
+    {
+      "title": "Fundamental Strategies",
+      "key": "fundamentalStrategies",
+      "description": "Fundamentally driven investing based on company/asset analysis, underwriting cash flows and downside protection rather than trading signals."
+    },
+    {
+      "title": "Global Opportunities",
+      "key": "globalOpportunities",
+      "description": "Broad, opportunistic investing across geographies, sectors, and asset types, allowing flexible capital solutions where risk/return is attractive."
+    },
+    {
+      "title": "Growth",
+      "key": "growth",
+      "description": "Investments in growing companies, typically focused on expansion capital, structured equity, or growth-oriented financing solutions."
+    },
+    {
+      "title": "Public Markets",
+      "key": "publicMarkets",
+      "description": "Investing and financing in publicly traded securities, often with flexible mandates across credit and/or equity in liquid markets."
+    },
+    {
+      "title": "Real Estate",
+      "key": "realEstate",
+      "description": "Investments and financing tied to real estate assets and platforms, including property-level and portfolio-level capital solutions."
+    },
+    {
+      "title": "Sports, Media & Entertainment",
+      "key": "sportsMediaEntertainment",
+      "description": "Investments in content, distribution, and media/entertainment businesses, including traditional and digital media platforms."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "entityType": "taxonomy",
+
+  "contentType": "taxonomyTerm",
+
+  "taxonomySet": {
+    "contentType": "taxonomySet",
+    "name": "Business Groups",
+    "field": "businessGroups"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+    "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Sixth Street",
+      "key": "sixthStreet",
+      "description?": ""
+    },
+    {
+      "title": "Sixth Street Lending Partners",
+      "key": "sixthStreetLendingPartners",
+      "description": ""
+    },
+    {
+      "title": "Sixth Street Lending Partners Investors",
+      "key": "sixthStreetLendingPartnersInvestors",
+      "description": ""
+    },
+    {
+      "title": "Sixth Street Specialty Lending",
+      "key": "sixthStreetSpecialtyLending",
+      "description": ""
+    },
+    {
+      "title": "Sixth Street Specialty Lending Investors",
+      "key": "sixthStreetSpecialtyLendingInvestor",
+      "description": ""
+    }
+  ]
+}

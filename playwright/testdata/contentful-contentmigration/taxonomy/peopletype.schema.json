@@ -1,0 +1,58 @@
+{
+  "entityType": "taxonomy",
+
+  "contentType": "taxonomyTerm",
+
+  "taxonomySet": {
+    "contentType": "taxonomySet",
+    "name": "People Type",
+    "field": "peopleType"
+  },
+
+  "rules": {
+    "term": {
+      "mustBePublished": true,
+    "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "Analyst",
+      "key": "analyst",
+      "description?": ""
+    },
+    {
+      "title": "Audit Committee",
+      "key": "auditCommittee",
+      "description": ""
+    },
+    {
+      "title": "Board of Directors",
+      "key": "boardOfDirectors",
+      "description": ""
+    },
+    {
+      "title": "Board of Trustees",
+      "key": "boardOfTrustees",
+      "description": ""
+    },
+    {
+      "title": "Investor Relations",
+      "key": "investorRelations",
+      "description": ""
+    },
+    {
+      "title": "Officers of Sixth Street Lending Partners",
+      "key": "officersOfSixthStreetLendingPartners",
+      "description": ""
+    },
+    {
+      "title": "Senior Professionals",
+      "key": "seniorProfessionals",
+      "description": ""
+    }
+  ]
+}
