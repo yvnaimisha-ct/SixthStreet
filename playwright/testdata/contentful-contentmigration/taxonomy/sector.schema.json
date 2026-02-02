@@ -1,12 +1,13 @@
 {
   "entityType": "taxonomy",
 
-  "contentType": "taxonomyTerm",
-
-  "taxonomySet": {
+  "category": {
     "contentType": "taxonomySet",
-    "name": "Sector",
-    "field": "sector"
+    "name": "Sector"
+  },
+
+  "term": {
+    "contentType": "taxonomyTerm"
   },
 
   "rules": {

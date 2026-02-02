@@ -1,12 +1,13 @@
 {
   "entityType": "taxonomy",
 
-  "contentType": "taxonomyTerm",
-
-  "taxonomySet": {
+   "category": {
     "contentType": "taxonomySet",
-    "name": "Industry",
-    "field": "industry"
+    "name": "Industry"
+  },
+
+  "term": {
+    "contentType": "taxonomyTerm"
   },
 
   "rules": {

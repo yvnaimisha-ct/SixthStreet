@@ -169,6 +169,15 @@ export async function validateContentTypeSchema(
       expectedField.id,
       errors
     );
+
+    validateRichTextRules(
+      actualField.validations,
+      expectedField.validations,
+      expected.id,
+      expectedField.id,
+      errors
+    );
+
   }
 
   /* ---- FINAL REPORT ---- */
@@ -406,3 +415,45 @@ function recordError(
 ) {
   errors.push(error);
 }
+
+function validateRichTextRules(
+  actualValidations: any[] | undefined,
+  expectedValidations: any | undefined,
+  contentType: string,
+  field: string,
+  errors: SchemaError[]
+) {
+  if (!expectedValidations) return;
+
+  const expectedNodes = expectedValidations.enabledNodeTypes;
+  const expectedMarks = expectedValidations.enabledMarks;
+
+  if (expectedNodes) {
+    const actualNodes =
+      actualValidations?.find(v => v.enabledNodeTypes)?.enabledNodeTypes;
+
+    assertRule(
+      actualNodes,
+      expectedNodes,
+      'enabledNodeTypes',
+      contentType,
+      field,
+      errors
+    );
+  }
+
+  if (expectedMarks !== undefined) {
+    const actualMarks =
+      actualValidations?.find(v => v.enabledMarks)?.enabledMarks;
+
+    assertRule(
+      actualMarks,
+      expectedMarks,
+      'enabledMarks',
+      contentType,
+      field,
+      errors
+    );
+  }
+}
+

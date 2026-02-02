@@ -1,23 +1,24 @@
 {
   "entityType": "taxonomy",
 
-  "contentType": "taxonomyTerm",
-
-  "taxonomySet": {
+  "category": {
     "contentType": "taxonomySet",
-    "name": "People Type",
-    "field": "peopleType"
+    "name": "People Type"
+  },
+
+  "term": {
+    "contentType": "taxonomyTerm"
   },
 
   "rules": {
     "term": {
       "mustBePublished": true,
-    "requiredFields": ["title", "key"],
+      "requiredFields": ["title","key"],
       "belongsToSet": true,
       "validateValues": true
     }
   },
-
+  
   "entries": [
     {
       "title": "Analyst",

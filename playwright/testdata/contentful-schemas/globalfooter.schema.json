@@ -29,7 +29,7 @@
         "type": "Link",
         "linkType": "Entry",
         "validations": {
-          "linkContentType": ["linkItem"]
+          "linkContentType": ["internalLink"]
         }
       }
     },
@@ -42,7 +42,7 @@
         "type": "Link",
         "linkType": "Entry",
         "validations": {
-          "linkContentType": ["linkItem"]
+          "linkContentType": ["internalLink"]
         }
       }
     },
@@ -54,7 +54,7 @@
       "validations": {
         "enabledNodeTypes": ["paragraph", "hyperlink"],
         "enabledMarks": []
-  }
+    }
     }
   ]
 }

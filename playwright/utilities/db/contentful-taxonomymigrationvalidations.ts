@@ -152,6 +152,11 @@ export async function validateContentEntries(schema: any) {
       expected.title
     );
 
+    // expect(
+    //   matchingEntries.length,
+    //   `[${process.env.ENV}] taxonomyTerm "${expected.title}" not found in locale ${DEFAULT_LOCALE}`
+    // ).toBeGreaterThan(0);
+
     expect(
       matchingEntries.length,
       `No entry found with title "${expected.title}"`

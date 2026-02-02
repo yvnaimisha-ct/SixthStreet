@@ -7,7 +7,27 @@ import strategySchema from '../../testdata/contentful-contentmigration/taxonomy/
 import topicSchema from '../../testdata/contentful-contentmigration/taxonomy/topic.schema.json';
 import { validateContentEntries } from '../../utilities/db/contentful-taxonomymigrationvalidations';
 
-test('@contentful Content validation – Sector taxonomy', async () => {
-  // const schema = loadSchema('sector.schema.json');
-  await validateContentEntries(strategySchema);
+const schemas = [
+  sectorSchema,
+  industrySchema,
+  investorgroupSchema,
+  peopletypeSchema,
+  strategySchema,
+  topicSchema
+];
+
+schemas.forEach(schema => {
+  const categoryName =
+    schema.category?.name ||
+    schema.term?.contentType ||
+    'unknown';
+
+  test(`@contentful Content validation – taxonomy – ${categoryName}`, async () => {
+    await validateContentEntries(schema);
+  });
 });
+
+test.skip(`@contentful Content validation – taxonomy - strategy`, async () => {
+    // const schema = loadSchema('sector.schema.json');
+    await validateContentEntries(strategySchema);
+  });

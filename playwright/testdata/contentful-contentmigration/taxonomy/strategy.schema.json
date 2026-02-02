@@ -21,11 +21,6 @@
 
   "entries": [
     {
-      "title": "Asset Based Finance",
-      "key": "assetBasedFinance",
-      "description": "Financing backed primarily by pools of assets/cash flows (e.g., receivables, consumer/merchant finance, hard assets), with underwriting anchored in collateral performance."
-    },
-    {
       "title": "Credit Market Strategies",
       "key": "creditMarketStrategies",
       "description": "Public and liquid credit investing across traded instruments, focused on relative value, credit selection, and market opportunities."

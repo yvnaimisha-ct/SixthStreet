@@ -18,17 +18,6 @@ test.describe('@contentful Contentful schema validation', () => {
     });
   }
 
-test.describe('@contentful targeted schema validation', () => {
-  const schemas = loadSchemas();
-
-  for (const schema of schemas) {
-    test.only(`Validate schema: ${schema.id}`, async ({}, testInfo) => {
-      const actual = await getContentType(schema.id);
-      await validateContentTypeSchema(actual, schema, testInfo);
-    });
-  }
-});
-
   test.skip(`Page Load validation: `, async ({ page }) => {
     console.log('Page load check');
     

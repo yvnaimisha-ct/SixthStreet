@@ -1,0 +1,30 @@
+{
+  "id": "internalLink",
+  "name": "Internal Link",
+  "description": "A link to an internal page",
+  "displayField": "internalName",
+  "fields": [
+    {
+      "id": "internalName",
+      "name": "Internal Name",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "linkText",
+      "name": "Link Text",
+      "type": "Symbol",
+      "required": true
+    },
+    {
+      "id": "linkUrl",
+      "name": "Link URL",
+      "type": "Link",
+      "required": true,
+      "linkType": "Entry",
+      "validations": {
+        "linkContentType": ["page"]
+      }
+    }
+  ]
+}
