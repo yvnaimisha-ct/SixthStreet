@@ -1,0 +1,30 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'Industry',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Application Software',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Health Technology',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Internet Services & Infrastructure',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Systems Software',
+  locale: 'en-US'
+}

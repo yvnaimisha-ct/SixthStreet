@@ -1,0 +1,91 @@
+Fetching content type: article
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/article
+
+📦 Validating Content Type: article
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: datePublished
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: variant
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: audienceType
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: industry
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+  🔍 Field: strategy
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+  🔍 Field: author
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: mediaMentionLink
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ regexp
+  🔍 Field: videoEmbed
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: body
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: featuredImage
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: relatedContent
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+✅ Content Type article PASSED

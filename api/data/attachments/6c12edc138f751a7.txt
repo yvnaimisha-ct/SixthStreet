@@ -1,0 +1,66 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'Sector',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Asset-Based Finance',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Consumer',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Direct Lending',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Energy & Infrastructure',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Growth',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Healthcare & Life Sciences',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Insurance',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Real Estate',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Software & Services',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sports, Media & Entertainment',
+  locale: 'en-US'
+}

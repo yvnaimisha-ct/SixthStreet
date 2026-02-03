@@ -1,0 +1,54 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'Strategy',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Credit Market Strategies',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Direct Lending',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Fundamental Strategies',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Global Opportunities',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Growth',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Public Markets',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Real Estate',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sports, Media & Entertainment',
+  locale: 'en-US'
+}

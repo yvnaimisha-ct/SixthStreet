@@ -1,0 +1,24 @@
+[
+  {
+    "contentType": "globalFooter",
+    "field": "primaryLinks.items",
+    "rule": "linkContentType",
+    "expected": [
+      "internalLink"
+    ],
+    "actual": [
+      "linkItem"
+    ]
+  },
+  {
+    "contentType": "globalFooter",
+    "field": "secondaryLinks.items",
+    "rule": "linkContentType",
+    "expected": [
+      "internalLink"
+    ],
+    "actual": [
+      "linkItem"
+    ]
+  }
+]

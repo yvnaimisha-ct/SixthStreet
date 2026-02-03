@@ -1,0 +1,72 @@
+Fetching content type: person
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/person
+
+📦 Validating Content Type: person
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: name
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: role
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: biography
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: image
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkMimetypeGroup
+  🔍 Field: linkedInProfile
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ regexp
+  🔍 Field: businessGroup
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: peopleType
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: strategy
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: sector
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: mediaFeatures
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+✅ Content Type person PASSED

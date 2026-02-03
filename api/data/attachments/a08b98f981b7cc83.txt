@@ -1,0 +1,32 @@
+Fetching content type: assetLink
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/assetLink
+
+📦 Validating Content Type: assetLink
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: label
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: url
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ regexp
+  🔍 Field: file
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+  🔍 Field: format
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+✅ Content Type assetLink PASSED

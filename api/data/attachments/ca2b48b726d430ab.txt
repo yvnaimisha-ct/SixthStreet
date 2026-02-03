@@ -1,0 +1,59 @@
+Fetching content type: investment
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/investment
+
+📦 Validating Content Type: investment
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: logo
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: websiteUrl
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ regexp
+  🔍 Field: status
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: industry
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: strategy
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: investmentType
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+✅ Content Type investment PASSED

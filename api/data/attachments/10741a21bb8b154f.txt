@@ -1,0 +1,23 @@
+Fetching content type: controlledValueSet
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/controlledValueSet
+
+📦 Validating Content Type: controlledValueSet
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: key
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+✅ Content Type controlledValueSet PASSED

@@ -1,0 +1,58 @@
+Fetching content type: secFiling
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/secFiling
+
+📦 Validating Content Type: secFiling
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: filingDate
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: documentDate
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: form
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: filingGroup
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: filingFormats
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+  🔍 Field: formatAssets
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+    ✅ linkContentType
+✅ Content Type secFiling PASSED

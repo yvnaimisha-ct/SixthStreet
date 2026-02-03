@@ -1,0 +1,48 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'People Type',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Analyst',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Audit Committee',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Board of Directors',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Board of Trustees',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Investor Relations',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Officers of Sixth Street Lending Partners',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Senior Professionals',
+  locale: 'en-US'
+}

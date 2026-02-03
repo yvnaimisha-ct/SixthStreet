@@ -1,0 +1,36 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'Business Groups',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sixth Street',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sixth Street Lending Partners',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sixth Street Lending Partners Investors',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sixth Street Specialty Lending',
+  locale: 'en-US'
+}
+🔎 Fetching entries {
+  contentType: 'taxonomyTerm',
+  field: 'title',
+  value: 'Sixth Street Specialty Lending Investors',
+  locale: 'en-US'
+}

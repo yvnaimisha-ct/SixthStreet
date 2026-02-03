@@ -1,0 +1,2 @@
+Fetching content type: internalLink
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/internalLink

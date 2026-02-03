@@ -1,0 +1,37 @@
+Fetching content type: taxonomyTerm
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/taxonomyTerm
+
+📦 Validating Content Type: taxonomyTerm
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: key
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: taxonomySet
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+  🔍 Field: parent
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+✅ Content Type taxonomyTerm PASSED

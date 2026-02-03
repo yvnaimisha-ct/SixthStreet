@@ -1,0 +1,6 @@
+🔎 Fetching entries {
+  contentType: 'taxonomySet',
+  field: 'title',
+  value: 'Topic',
+  locale: 'en-US'
+}

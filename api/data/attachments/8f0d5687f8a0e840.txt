@@ -1,0 +1,30 @@
+Fetching content type: controlledValue
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/controlledValue
+
+📦 Validating Content Type: controlledValue
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: key
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: sortOrder
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: set
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+✅ Content Type controlledValue PASSED

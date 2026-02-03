@@ -1,0 +1,48 @@
+Fetching content type: eventMaterial
+Request URL: https://api.contentful.com/spaces/7l87hmss2y3w/environments/development/content_types/eventMaterial
+
+📦 Validating Content Type: eventMaterial
+    ✅ id
+    ✅ name
+    ✅ displayField
+  🔍 Field: title
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: description
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: date
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: time
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+  🔍 Field: webcast
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ regexp
+  🔍 Field: attachments
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ items.type
+    ✅ items.linkType
+  🔍 Field: businessGroup
+    ✅ Field present
+    ✅ type
+    ✅ required
+    ✅ name
+    ✅ linkType
+    ✅ linkContentType
+✅ Content Type eventMaterial PASSED
