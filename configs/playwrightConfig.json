@@ -92,7 +92,7 @@
         "name": "Contentfultest",
         "use": {
         },
-        "testMatch": ["**/contentful-schema.test.ts", "**/contentful-taxonomymigration.test.ts"]
+        "testMatch": ["**/contentful-taxonomy.test.ts"]
       }
     ]
   }

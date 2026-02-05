@@ -2,7 +2,7 @@ import { TestInfo, expect, test } from '@playwright/test';
 import { loadAllSchemas } from '../../utilities/schema-loader';
 import { loadSchemas } from '../../utilities/schema-loader';
 import { getContentType } from '../../utilities/contentful-helper-schema';
-import { validateContentTypeSchema } from '../../utilities/db/validations';
+import { validateContentTypeSchema } from '../../utilities/db/schemavalidations';
 
 const schemas = loadAllSchemas();
 test.describe('@contentful Contentful schema validation', () => {
