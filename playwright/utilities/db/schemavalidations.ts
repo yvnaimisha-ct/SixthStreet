@@ -269,31 +269,6 @@ function normalizeExpectedValidations(validations: any): any[] {
   return Array.isArray(validations) ? validations : [validations];
 }
 
-
-/* VALIDATION RULES */
-
-// function validateRegexpRule(
-//   actualValidations: any[] | undefined,
-//   expectedValidations: any | undefined,
-//   contentType: string,
-//   field: string,
-//   errors: SchemaError[]
-// ) {
-//   const expected = expectedValidations?.regexp;
-//   if (!expected) return;
-
-//   const actual =
-//     actualValidations?.find(v => v.regexp)?.regexp?.pattern;
-
-//   assertRule(
-//     actual,
-//     expected,
-//     'regexp',
-//     contentType,
-//     field,
-//     errors
-//   );
-// }
 function validateRegexpRule(
   actualValidations: any[] | undefined,
   expectedValidations: any,

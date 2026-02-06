@@ -1,0 +1,120 @@
+{
+  "entityType": "controlledvalueSet",
+
+  "category": {
+    "contentType": "controlledValueSet",
+    "name": "Filing Group"
+  },
+
+  "term": {
+    "contentType": "controlledValue"
+  },
+
+  "rules": {
+    "category":{
+      "mustBePublished": true,
+      "requiredFields": ["title", "key", "description"]
+    },
+    "term": {
+      "mustBePublished": true,
+      "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+     {
+      "title": "10-K — Annual report",
+      "key": "10-k-annual-report"
+    },
+    {
+      "title": "10-K/A — Amended annual report",
+      "key": "10-k-a-amended-annual-report"
+    },
+    {
+      "title": "10-Q — Quarterly report",
+      "key": "10-q-quarterly-report"
+    },
+    {
+      "title": "10-Q/A — Amended quarterly report",
+      "key": "10-q-a-amended-quarterly-report"
+    },
+     {
+      "title": "8-K — Current report (material events)",
+      "key": "8-k-current-report-material-events"
+    },
+    {
+      "title": "8-K/A — Amended current report",
+      "key": "8-k-a-amended-current-report"
+    },
+    {
+      "title": "DEF 14A — Definitive proxy statement",
+      "key": "def-14a-definitive-proxy-statement"
+    },
+    {
+      "title": "DEFA14A — Additional definitive proxy materials",
+      "key": "defa14a-additional-definitive-proxy-materials"
+    },
+    {
+      "title": "PRE 14A — Preliminary proxy statement",
+      "key": "pre-14a-preliminary-proxy-statement"
+    },
+     {
+      "title": "PRER14A — Revised preliminary proxy statement",
+      "key": "prer14a-revised-preliminary-proxy-statement"
+    },
+    {
+      "title": "3 — Initial statement of beneficial ownership",
+      "key": "3-initial-statement-of-beneficial-ownership"
+    },
+    {
+      "title": "4 — Statement of changes in beneficial ownership",
+      "key": "4-statement-of-changes-in-beneficial-ownership"
+    },
+    {
+      "title": "5 — Annual statement of beneficial ownership",
+      "key": "5-annual-statement-of-beneficial-ownership"
+    },
+     {
+      "title": "144 — Notice of proposed sale of securities (often included in insider-related feeds)",
+      "key": "144-notice-of-proposed-sale-of-securities-often-included-in-insider-related-feeds"
+    },
+    {
+      "title": "S-1 / S-1/A — Registration statement (and amendment)",
+      "key": "s-1-s-1-a-registration-statement-and-amendment"
+    },
+    {
+      "title": "S-3 / S-3/A — Shelf registration statement (and amendment)",
+      "key": "s-3-s-3-a-shelf-registration-statement-and-amendment"
+    },
+    {
+      "title": "S-4 / S-4/A — Registration for business combinations/exchange offers (and amendment)",
+      "key": "s-4-s-4-a-registration-for-business-combinations-exchange-offers-and-amendment"
+    },
+    {
+      "title": "424B1 / 424B2 / 424B3 / 424B4 / 424B5 / 424B7 / 424B8 — Prospectus / prospectus supplement variants",
+      "key": "424b1-424b2-424b3-424b4-424b5-424b7-424b8-prospectus-prospectus-supplement-variants"
+    },
+    {
+      "title": "FWP — Free writing prospectus",
+      "key": "fwp-free-writing-prospectus"
+    },
+    {
+      "title": "POS AM — Post-effective amendment",
+      "key": "pos-am-post-effective-amendment"
+    },
+    {
+      "title": "EFFECT — Notice of effectiveness (if your feed includes it)",
+      "key": "effect-notice-of-effectiveness-if-your-feed-includes-it"
+    },
+    {
+      "title": "SC 13D / SC 13G — Beneficial ownership reports (usually filed by holders, not the issuer)",
+      "key": "sc-13d-sc-13g-beneficial-ownership-reports-usually-filed-by-holders-not-the-issuer"
+    },
+    {
+      "title": "13F-HR — Institutional holdings report (filed by investment managers; may apply to the parent firm rather than the issuer)",
+      "key": "13f-hr-institutional-holdings-report-filed-by-investment-managers-may-apply-to-the-parent-firm-rather-than-the-issuer"
+    }
+  ]
+}

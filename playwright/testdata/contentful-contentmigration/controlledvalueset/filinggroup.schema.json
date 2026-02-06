@@ -1,0 +1,48 @@
+{
+  "entityType": "controlledvalueSet",
+
+  "category": {
+    "contentType": "controlledValueSet",
+    "name": "Filing Group"
+  },
+
+  "term": {
+    "contentType": "controlledValue"
+  },
+
+  "rules": {
+    "category":{
+      "mustBePublished": true,
+      "requiredFields": ["title", "key", "description"]
+    },
+    "term": {
+      "mustBePublished": true,
+      "requiredFields": ["title", "key"],
+      "belongsToSet": true,
+      "validateValues": true
+    }
+  },
+
+  "entries": [
+    {
+      "title": "3, 4, 5, ",
+      "key": "3-4-5"
+    },
+    {
+      "title": "Annual Filings",
+      "key": "annual-filings"
+    },
+    {
+      "title": "Proxy Filings",
+      "key": "proxy-filings"
+    },
+    {
+      "title": "Quarterly Filings",
+      "key": "quarterly-filings"
+    },
+    {
+      "title": "Other",
+      "key": "other"
+    }
+  ]
+}

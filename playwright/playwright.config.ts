@@ -18,9 +18,6 @@ try {
   console.error("Error loading config:", err);
 }
 
-// dotenv.config();
-
-
 // Get environment variables
 const env = process.env.ENV || 'stage'; // Default to stage since that's what exists in config
 const runMode = process.env.RUN_MODE || 'local';
@@ -50,10 +47,6 @@ console.log("PROJECT CONFIG: ", projectConfig);
 // Array to hold the selected Playwright project configuration
 var projects: any = [] = [];
 
-// if (isMobileMode) console.log("SELECTED MOBILE DEVICE FOR EMULATION: ", selectedDevice);
-// Apply Playwright's predefined device configuration if mobile mode is enabled
-// const deviceConfig = isMobileMode && devices[selectedDevice] ? devices[selectedDevice] : {};
-// Assign appropriate browser-specific project configurations based on `PROJECT` environment variable
 if (projectConfig === 'chrome') {
   projects = configs.testChrome.map((project: { use: any; }) => ({
     ...project,
@@ -78,14 +71,14 @@ if (projectConfig === 'chrome') {
   projects = configs.testapi;
   // Set API report directory
   reportOutputDir = './playwright/reports/api/allure-results';
-// } else {
-//   // Default to Chromium if no specific browser is provided
-//   projects = [
-//     {
-//       name: 'chromium',
-//       use: { browserName: 'chromium' },
-//     }
-//   ];
+} else {
+  // Default to Chromium if no specific browser is provided
+  projects = [
+    {
+      name: 'chromium',
+      use: { browserName: 'chromium' },
+    }
+  ];
 }
 const reportTitle="Automation Report for "+platform;
 // Function to determine the correct Allure results folder dynamically
@@ -117,8 +110,6 @@ if(runMode === 'BROWSERSTACK'){
     }));
     projects=updatedArray;
     console.log("PROJECT BEFORE MAP "+JSON.stringify(projects));
-    //projects=mapToBrowserStackSettings(projects);
-    //console.log("BS PROJECT "+projects);
 }
 // Define Playwright's global configuration
 export default defineConfig({

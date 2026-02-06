@@ -26,7 +26,7 @@ test.describe('SixStreet Homepage Tests', () => {
 
     });
 
-    test('Launch Sixstreer Homepage Tests', {tag : ['@smoke', '@regression']},  async ({ page }, testInfo) => {
+    test('Launch Sixstreet Homepage Tests', {tag : ['@smoke', '@regression']},  async ({ page }, testInfo) => {
 
         const poManager = new POManager(page);
         console.log('Starting Valid URL Test');
